@@ -1,4 +1,4 @@
-import { ThunkAction } from 'redux-thunk';
+
 import { Dispatch } from 'redux';
 import { receiveCategories } from '../api/api';
 import { CategoryType } from './../types/productTypes';
