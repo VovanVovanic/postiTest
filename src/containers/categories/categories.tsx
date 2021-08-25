@@ -17,7 +17,7 @@ const categories = useSelector<AppRootStateType, Array<CategoryType>>((state) =>
       return (
         <div>
           <AccoItem category={category} key={category.id} type='category'>
-            <Brands brands={category.brands} />
+            <Brands brands={category.brands} catId={category.id} />
           </AccoItem>
         </div>
       );

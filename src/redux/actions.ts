@@ -7,9 +7,10 @@ export const SETERROR = "SETERROR";
 export const SETMESSAGE = "SETMESSAGE";
 export const SETCATEGORIES = "SETCATEGORIES";
 export const ADDCATEGORY = "ADD CATEGORY";
-export const DELETECATEGORY = "DELETECATEGORY";
 export const ADDBRAND = "ADDBRAND";
+export const DELETECATEGORY = "DELETECATEGORY";
 export const DELETEBRAND = "DELETEBRAND";
+export const DELETEPRODUCT = "DELETEPRODUCT"
 export const ADDPRODUCT = "ADDPRODUCT";
 
 
@@ -26,15 +27,24 @@ export const productsActions = {
     return { type: SETLOADING, load } as const;
   },
   setError: (error: string) => {
-    return { type: SETERROR, error } as const
+    return { type: SETERROR, error } as const;
   },
   setMessage: (message: string) => {
     return { type: SETMESSAGE, message } as const;
   },
   setCategories: (categories: Array<CategoryType>) => {
-    return {type: SETCATEGORIES, categories, error: ""} as const
-  }
-}
+    return { type: SETCATEGORIES, categories, error: "" } as const;
+  },
+  deleteCategory: (catId: string) => {
+    return { type: DELETECATEGORY, catId } as const;
+  },
+  deleteBrand: (catId: string, brandId: number) => {
+    return { type: DELETEBRAND, catId, brandId } as const;
+  },
+  deleteProduct: (catId: string, brandId: number, productId: number) => {
+    return { type: DELETEPRODUCT, catId, brandId, productId } as const;
+  },
+};
 
 const {setLoading, setError, setMessage, setCategories} = productsActions
 

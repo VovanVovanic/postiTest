@@ -11,35 +11,48 @@ import {
 } from "@material-ui/core";
 import { AccoComponentType } from "../../types/componentTypes";
 import { useMemo } from "react";
+import { useDispatch } from "react-redux";
+import { productsActions } from "../../redux/actions";
 
+const AccoItem: React.FC<AccoComponentType> = ({
+  category,
+  brand,
+  product,
+  children,
+  type,
+  catId,
+  brandId,
+}) => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-const AccoItem: React.FC<AccoComponentType > = ({ category, brand, product, children, type }) => {
-const classes = useStyles();
-console.log(type)
-  const deleteCategory = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const deleteItem = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log(type, catId, brandId);
     e.stopPropagation();
-    console.log(category?.id);
+    if (category && type === "category") {
+      dispatch(productsActions.deleteCategory(category.id));
+    }
+    if (brand && type === "brand" && catId) {
+      dispatch(productsActions.deleteBrand(catId, brand.id));
+    }
+    if (product && type === "product" && catId && brandId) {
+      dispatch(productsActions.deleteProduct(catId, brandId, product.id));
+    }
   };
 
   const itemTitle = useMemo(() => {
-    let t:string | undefined = ""
-    if (type === 'category') {
-      t = category?.name
+    let t: string | undefined = "";
+    if (type === "category") {
+      t = category?.name;
     }
-    if (type === 'brand') {
-      t = brand?.name
+    if (type === "brand") {
+      t = brand?.name;
     }
-    if (type === 'product') {
-      t = product?.name
+    if (type === "product") {
+      t = product?.name;
     }
-    return t
-  }, [brand?.name, category?.name, product?.name, type])
-  
-
-  
-
+    return t;
+  }, [brand?.name, category?.name, product?.name, type]);
 
   return (
     <Accordion className={classes.root}>
@@ -55,7 +68,7 @@ console.log(type)
             color="default"
             variant="contained"
             className={classes.btn}
-            onClick={(e) => deleteCategory(e)}
+            onClick={(e) => deleteItem(e)}
           >
             delete
           </Button>

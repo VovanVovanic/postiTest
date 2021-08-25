@@ -7,14 +7,19 @@ export interface AccoComponentType {
   product?: ItemType;
   children: ReactNode;
   type: "category" | "brand" | "product";
+  brandId?: number
+  catId?: string
 }
 
 export interface BrandsComponentType {
   brands: Array<BrandType>;
+  catId: string
 }
 
 export interface ProductsComponentType {
   products: Array<ItemType>;
+  catId: string
+  brandId: number
 }
 
 export interface AddInputComponent {
