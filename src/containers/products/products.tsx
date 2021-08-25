@@ -11,7 +11,7 @@ const Products: React.FC<ProductsComponentType> = ({ products }) => {
     return products.map((product) => {
       return (
         <AccoItem key={product.id} type="product" product={product} >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem iste sapiente suscipit. Quos eius expedita molestias dolorum ex iusto quas dignissimos, nemo nihil officia sunt velit, non dicta! Aperiam, voluptas.
+          Here can be description
         </AccoItem>
       );
     });

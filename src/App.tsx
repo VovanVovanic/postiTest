@@ -15,8 +15,8 @@ function App() {
   
   return (
     <div className="App">
-      <Header />
-      <Categories />
+    <Header />
+    <Categories />
     </div>
   );
 }

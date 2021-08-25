@@ -5,13 +5,16 @@ export const useStyles = makeStyles((theme: Theme) =>
     root: {
       marginBottom: "50px",
     },
+    toolbar: {
+      display: "flex",
+      justifyContent: "flex-end",
+    },
+
     panel: {
       display: "flex",
       width: "40%",
       justifyContent: "space-between",
-      [theme.breakpoints.down("sm")]: {
-        background: "red",
-      },
+      justifySelf: "flex-end",
     },
     buttons: {
       display: "flex",

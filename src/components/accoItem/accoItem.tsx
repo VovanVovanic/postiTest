@@ -35,7 +35,11 @@ console.log(type)
       t = product?.name
     }
     return t
-  },[brand?.name, category?.name, product?.name, type])
+  }, [brand?.name, category?.name, product?.name, type])
+  
+
+  
+
 
   return (
     <Accordion className={classes.root}>
@@ -48,7 +52,7 @@ console.log(type)
           <Typography variant="subtitle2">{itemTitle}</Typography>
           <Button
             size="small"
-            color="secondary"
+            color="default"
             variant="contained"
             className={classes.btn}
             onClick={(e) => deleteCategory(e)}
@@ -57,9 +61,7 @@ console.log(type)
           </Button>
         </Box>
       </AccordionSummary>
-      <AccordionDetails>
-        {children}
-      </AccordionDetails>
+      <AccordionDetails>{children}</AccordionDetails>
     </Accordion>
   );
 };
