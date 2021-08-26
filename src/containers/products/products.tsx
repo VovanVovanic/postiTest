@@ -4,13 +4,23 @@ import AccoItem from "../../components/accoItem/accoItem";
 import { ProductsComponentType } from "../../types/componentTypes";
 import { useStyles } from "./products.styles";
 
-const Products: React.FC<ProductsComponentType> = ({ products, catId, brandId }) => {
+const Products: React.FC<ProductsComponentType> = ({
+  products,
+  catId,
+  brandId,
+}) => {
   const classes = useStyles();
 
   const list = useMemo(() => {
     return products.map((product) => {
       return (
-        <AccoItem key={product.id} type="product" product={product} catId={catId} brandId={brandId}>
+        <AccoItem
+          key={product.id}
+          type="product"
+          product={product}
+          catId={catId}
+          brandId={brandId}
+        >
           Here can be description
         </AccoItem>
       );

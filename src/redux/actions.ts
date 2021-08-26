@@ -4,7 +4,6 @@ import { receiveCategories } from '../api/api';
 import { CategoryType } from './../types/productTypes';
 export const SETLOADING = "SETLOADING";
 export const SETERROR = "SETERROR";
-export const SETMESSAGE = "SETMESSAGE";
 export const SETCATEGORIES = "SETCATEGORIES";
 export const ADDCATEGORY = "ADD CATEGORY";
 export const ADDBRAND = "ADDBRAND";
@@ -18,7 +17,14 @@ export const ADDPRODUCT = "ADDPRODUCT";
 
 type auxType<T> = T extends { [key: string]: infer actionType } ? actionType : never
 export type ActionType = ReturnType<auxType<typeof productsActions>>
-
+interface addCategoryType {
+  name: string
+  id: string
+}
+interface addItemType {
+  name: string
+  id: number 
+}
 
 
 // actions
@@ -28,9 +34,6 @@ export const productsActions = {
   },
   setError: (error: string) => {
     return { type: SETERROR, error } as const;
-  },
-  setMessage: (message: string) => {
-    return { type: SETMESSAGE, message } as const;
   },
   setCategories: (categories: Array<CategoryType>) => {
     return { type: SETCATEGORIES, categories, error: "" } as const;
@@ -44,9 +47,18 @@ export const productsActions = {
   deleteProduct: (catId: string, brandId: number, productId: number) => {
     return { type: DELETEPRODUCT, catId, brandId, productId } as const;
   },
+  addCategory: (payload: addCategoryType) => {
+    return { type: ADDCATEGORY, payload } as const;
+  },
+  addBrand: (payload: addItemType, catId: string) => {
+    return { type: ADDBRAND, payload, catId } as const;
+  },
+  addProduct: (payload: addItemType, catId: string, brandId: number) => {
+    return { type: ADDPRODUCT, payload, catId, brandId } as const;
+  },
 };
 
-const {setLoading, setError, setMessage, setCategories} = productsActions
+export const {setLoading, setError, setCategories, deleteBrand, deleteCategory, deleteProduct,addBrand,addCategory,addProduct} = productsActions
 
 // thunks
 

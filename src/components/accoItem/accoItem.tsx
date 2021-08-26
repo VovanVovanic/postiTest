@@ -12,7 +12,11 @@ import {
 import { AccoComponentType } from "../../types/componentTypes";
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { productsActions } from "../../redux/actions";
+import {
+  deleteBrand,
+  deleteCategory,
+  deleteProduct,
+} from "../../redux/actions";
 
 const AccoItem: React.FC<AccoComponentType> = ({
   category,
@@ -27,16 +31,16 @@ const AccoItem: React.FC<AccoComponentType> = ({
   const dispatch = useDispatch();
 
   const deleteItem = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(type, catId, brandId);
     e.stopPropagation();
+
     if (category && type === "category") {
-      dispatch(productsActions.deleteCategory(category.id));
+      dispatch(deleteCategory(category.id));
     }
     if (brand && type === "brand" && catId) {
-      dispatch(productsActions.deleteBrand(catId, brand.id));
+      dispatch(deleteBrand(catId, brand.id));
     }
     if (product && type === "product" && catId && brandId) {
-      dispatch(productsActions.deleteProduct(catId, brandId, product.id));
+      dispatch(deleteProduct(catId, brandId, product.id));
     }
   };
 

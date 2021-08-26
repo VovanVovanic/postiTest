@@ -7,47 +7,42 @@ export interface AccoComponentType {
   product?: ItemType;
   children: ReactNode;
   type: "category" | "brand" | "product";
-  brandId?: number
-  catId?: string
+  brandId?: number;
+  catId?: string;
 }
 
 export interface BrandsComponentType {
   brands: Array<BrandType>;
-  catId: string
+  catId: string;
 }
 
 export interface ProductsComponentType {
   products: Array<ItemType>;
-  catId: string
-  brandId: number
-}
-
-export interface AddInputComponent {
-  onChange: (value: string)=>void
-}
-
-export interface popperTitleComponent {
-  name: string
-  onClose: ()=>void
+  catId: string;
+  brandId: number;
 }
 
 export interface WrapperPropsType {
-  name: string
+  name: string;
+  onClose: () => void;
+  onAddName: (value: string) => void;
 }
 
-export type ActivePopperType = 'brand' | 'product' | 'category' | ''
+export type ActivePopperType = "brand" | "product" | "category" | "";
 
 export interface AddItemPropsType {
   onClose: () => void;
   name: "brand" | "product" | "category";
 }
 
-export interface SelectPropsType{
-  name: string | null
+export interface SelectPropsType {
+  name: string | null;
+  isDisabled?: boolean
 }
+
 export interface setCategoryType {
-  catName: string | null
-  catId: string | null
+  catName: string | null;
+  catId: string | null;
 }
 
 export interface setBrandType {

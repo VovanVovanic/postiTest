@@ -1,5 +1,4 @@
 import { Select } from "@material-ui/core";
-import { useMemo } from "react";
 import { PropsWithChildren } from "react";
 import { ReactNode } from "react";
 import { SelectPropsType } from "../../types/componentTypes";
@@ -7,17 +6,13 @@ import { useStyles } from "./select.styles";
 
 
 
-const SelectItem: React.FC<SelectPropsType & PropsWithChildren<ReactNode>> = ({ name, children }) => {
+const SelectItem: React.FC<SelectPropsType & PropsWithChildren<ReactNode>> = ({ name, isDisabled, children }) => {
     const classes = useStyles();
-
-  const isName = useMemo(() => {
-   return name === null ? "-----------" : name
-  },[name])
   return (
     <Select
-      value={isName}
+      value={name}
+      disabled={isDisabled}
       className={classes.root}
-      
     >
       {children}
     </Select>
